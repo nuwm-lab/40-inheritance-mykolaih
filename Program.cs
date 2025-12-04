@@ -44,7 +44,7 @@ namespace Task08_RectangleParallelepiped
 
         public virtual void PrintCoefficients()
         {
-            Console.WriteLine("Rectangle bounds:");
+            Console.WriteLine("Rectangle bounds");
             Console.WriteLine($"  b1 <= x1 <= a1 : {b1} <= x <= {a1}");
             Console.WriteLine($"  b2 <= x2 <= a2 : {b2} <= y <= {a2}");
         }
