@@ -164,6 +164,8 @@ namespace Task08_RectangleParallelepiped
                 if (read < count)
                 {
                     Console.WriteLine($"Need {count - read} more number(s)...");
+
+                    Console.WriteLine("...");
                 }
             }
             return list;
