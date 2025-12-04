@@ -49,7 +49,7 @@ namespace Task08_RectangleParallelepiped
             Console.WriteLine($"  b2 <= x2 <= a2 : {b2} <= y <= {a2}");
         }
 
-        // check if 2D point belongs to rectangle (including edges)
+        // check if 2D point belongs to rectangle
         public virtual bool Contains(Point2D p)
         {
             return p.X >= b1 && p.X <= a1 && p.Y >= b2 && p.Y <= a2;
