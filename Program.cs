@@ -109,7 +109,7 @@ namespace Task08_RectangleParallelepiped
             var point2 = new Point2D(p2[0], p2[1]);
             Console.WriteLine(rect.Contains(point2)
                 ? "Point belongs to the rectangle."
-                : "Point does NOT belong to the rectangle.");
+                : "Point does NOT belong to the rectangle");
 
             // Parallelepiped input
             Console.WriteLine("\nEnter parallelepiped bounds (b1 a1 b2 a2 b3 a3) separated by spaces:");
