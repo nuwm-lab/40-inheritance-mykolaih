@@ -56,7 +56,7 @@ namespace Task08_RectangleParallelepiped
         }
     }
 
-    // Parallelepiped: extends Rectangle with b3 <= x3 <= a3
+    // Parallelepiped: extends Rectan.gle with b3 <= x3 <= a3.
     public class Parallelepiped : Rectangle
     {
         protected double b3, a3;
