@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 
 namespace Task08_RectangleParallelepiped
@@ -172,3 +172,4 @@ namespace Task08_RectangleParallelepiped
         }
     }
 }
+
