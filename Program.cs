@@ -20,7 +20,7 @@ namespace Task08_RectangleParallelepiped
         public Point3D(double x, double y, double z) { X = x; Y = y; Z = z; }
     }
 
-    // Rectangle: b1 <= x1 <= a1, b2 <= x2 <= a2
+    // Rectangle: MinX1 <= x1 <= MaxX1, MinX2 <= x2 <= MaxX2
     public class Rectangle
     {
         private double _b1, _a1, _b2, _a2;
