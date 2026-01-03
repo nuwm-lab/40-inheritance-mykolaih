@@ -25,7 +25,7 @@ namespace Task08_RectangleParallelepiped
     {
         private double _b1, _a1, _b2, _a2;
 
-        // protected properties allow derived classes to read bounds but not modify directly
+        // protected properties allow derived classes to read bounds but not modify directly.
         protected double B1 => _b1;
         protected double A1 => _a1;
         protected double B2 => _b2;
