@@ -21,17 +21,17 @@ namespace Task08_RectangleParallelepiped
     }
 
     /// <summary>
-    /// Rectangle: b1 <= x1 <= a1, b2 <= x2 <= a2
+    /// Rectangle: MinX1 <= x1 <= MaxX1, MinX2 <= x2 <= MaxX2
     /// </summary>
     public class Rectangle
     {
-        private double _b1, _a1, _b2, _a2;
+        private double _minX1, _maxX1, _minX2, _maxX2;
 
         // protected properties allow derived classes to read bounds but not modify directly
-        protected double B1 => _b1;
-        protected double A1 => _a1;
-        protected double B2 => _b2;
-        protected double A2 => _a2;
+        protected double MinX1 => _minX1;
+        protected double MaxX1 => _maxX1;
+        protected double MinX2 => _minX2;
+        protected double MaxX2 => _maxX2;
 
         public Rectangle() { }
 
