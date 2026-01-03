@@ -90,9 +90,8 @@ namespace Task08.RectangleParallelepiped
 
         public Parallelepiped() : base() { }
 
-        // centralize initialization here to avoid double-normalization in base
         public Parallelepiped(double b1, double a1, double b2, double a2, double b3, double a3)
-            : base()
+            : base(b1, a1, b2, a2)
         {
             SetCoefficients(b1, a1, b2, a2, b3, a3);
         }
@@ -103,7 +102,6 @@ namespace Task08.RectangleParallelepiped
             // reuse base validation and normalization for first two dimensions
             base.SetCoefficients(b1, a1, b2, a2);
 
-            // use shared validation helper for consistency
             ValidateNumber(b3, nameof(b3));
             ValidateNumber(a3, nameof(a3));
 
