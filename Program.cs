@@ -1,9 +1,9 @@
 using System;
 using System.Globalization;
 
-namespace Task08_RectangleParallelepiped
+namespace Task08.RectangleParallelepiped
 {
-    public struct Point2D
+    public readonly struct Point2D
     {
         public double X { get; }
         public double Y { get; }
@@ -11,7 +11,7 @@ namespace Task08_RectangleParallelepiped
         public Point2D(double x, double y) { X = x; Y = y; }
     }
 
-    public struct Point3D
+    public readonly struct Point3D
     {
         public double X { get; }
         public double Y { get; }
@@ -25,7 +25,7 @@ namespace Task08_RectangleParallelepiped
     {
         private double _b1, _a1, _b2, _a2;
 
-        // protected properties allow derived classes to read bounds but not modify directly
+        // protected properties allow derived classes to read bounds but not modify directly.
         protected double B1 => _b1;
         protected double A1 => _a1;
         protected double B2 => _b2;
@@ -39,7 +39,7 @@ namespace Task08_RectangleParallelepiped
         }
 
         // validate numeric values
-        private static void ValidateNumber(double v, string name)
+        protected static void ValidateNumber(double v, string name)
         {
             if (double.IsNaN(v) || double.IsInfinity(v))
                 throw new ArgumentException($"{name} must be a finite number.", name);
@@ -102,8 +102,8 @@ namespace Task08_RectangleParallelepiped
             // reuse base validation and normalization for first two dimensions
             base.SetCoefficients(b1, a1, b2, a2);
 
-            if (double.IsNaN(b3) || double.IsInfinity(b3)) throw new ArgumentException(nameof(b3));
-            if (double.IsNaN(a3) || double.IsInfinity(a3)) throw new ArgumentException(nameof(a3));
+            ValidateNumber(b3, nameof(b3));
+            ValidateNumber(a3, nameof(a3));
 
             if (b3 <= a3) { _b3 = b3; _a3 = a3; }
             else { _b3 = a3; _a3 = b3; }
@@ -111,7 +111,9 @@ namespace Task08_RectangleParallelepiped
 
         public override void PrintCoefficients()
         {
-            base.PrintCoefficients();
+            Console.WriteLine("Parallelepiped bounds:");
+            Console.WriteLine($"  b1 <= x1 <= a1 : {B1} <= x1 <= {A1}");
+            Console.WriteLine($"  b2 <= x2 <= a2 : {B2} <= x2 <= {A2}");
             Console.WriteLine($"  b3 <= x3 <= a3 : {B3} <= x3 <= {A3}");
         }
 
@@ -209,4 +211,3 @@ namespace Task08_RectangleParallelepiped
         }
     }
 }
-
