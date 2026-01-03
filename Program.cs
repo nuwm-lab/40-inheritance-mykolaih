@@ -1,9 +1,9 @@
 using System;
 using System.Globalization;
 
-namespace Task08_RectangleParallelepiped
+namespace Task08.RectangleParallelepiped
 {
-    public struct Point2D
+    public readonly struct Point2D
     {
         public double X { get; }
         public double Y { get; }
@@ -11,7 +11,7 @@ namespace Task08_RectangleParallelepiped
         public Point2D(double x, double y) { X = x; Y = y; }
     }
 
-    public struct Point3D
+    public readonly struct Point3D
     {
         public double X { get; }
         public double Y { get; }
@@ -39,7 +39,7 @@ namespace Task08_RectangleParallelepiped
         }
 
         // validate numeric values
-        private static void ValidateNumber(double v, string name)
+        protected static void ValidateNumber(double v, string name)
         {
             if (double.IsNaN(v) || double.IsInfinity(v))
                 throw new ArgumentException($"{name} must be a finite number.", name);
@@ -90,8 +90,9 @@ namespace Task08_RectangleParallelepiped
 
         public Parallelepiped() : base() { }
 
+        // centralize initialization here to avoid double-normalization in base
         public Parallelepiped(double b1, double a1, double b2, double a2, double b3, double a3)
-            : base(b1, a1, b2, a2)
+            : base()
         {
             SetCoefficients(b1, a1, b2, a2, b3, a3);
         }
@@ -102,8 +103,9 @@ namespace Task08_RectangleParallelepiped
             // reuse base validation and normalization for first two dimensions
             base.SetCoefficients(b1, a1, b2, a2);
 
-            if (double.IsNaN(b3) || double.IsInfinity(b3)) throw new ArgumentException(nameof(b3));
-            if (double.IsNaN(a3) || double.IsInfinity(a3)) throw new ArgumentException(nameof(a3));
+            // use shared validation helper for consistency
+            ValidateNumber(b3, nameof(b3));
+            ValidateNumber(a3, nameof(a3));
 
             if (b3 <= a3) { _b3 = b3; _a3 = a3; }
             else { _b3 = a3; _a3 = b3; }
@@ -111,7 +113,9 @@ namespace Task08_RectangleParallelepiped
 
         public override void PrintCoefficients()
         {
-            base.PrintCoefficients();
+            Console.WriteLine("Parallelepiped bounds:");
+            Console.WriteLine($"  b1 <= x1 <= a1 : {B1} <= x1 <= {A1}");
+            Console.WriteLine($"  b2 <= x2 <= a2 : {B2} <= x2 <= {A2}");
             Console.WriteLine($"  b3 <= x3 <= a3 : {B3} <= x3 <= {A3}");
         }
 
